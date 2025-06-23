@@ -15,6 +15,7 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
   i18n: {
+    
     locales: [{
       code: 'de',
       name: 'Deutsch'
@@ -26,14 +27,17 @@ export default defineNuxtConfig({
       name: 'Français'
     }],
     defaultLocale: 'en',
+    bundle:{
+      optimizeTranslationDirective: false,
+    },
     strategy: 'prefix_except_default',
   },
   supabase: {
       redirectOptions: {
     login: '/login',
     callback: '/confirm',
-    include: undefined,
-    exclude: [],
+    include:['/profile', '/settings'],
+    exclude: ['/*'],
     saveRedirectToCookie: true,
   }
   },
